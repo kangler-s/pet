@@ -2,7 +2,7 @@
  * @Author: kangler liukang0120@163.com
  * @Date: 2024-02-14 09:27:58
  * @LastEditors: kangler liukang0120@163.com
- * @LastEditTime: 2024-02-16 19:40:37
+ * @LastEditTime: 2024-02-20 16:32:18
  * @FilePath: /pet/lib/common/kBottomTabbar.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -51,9 +51,9 @@ class _KBottomTabbarState extends State<KBottomTabbar> {
       bottomNavigationBar: ConvexAppBar(
         items: const [
           TabItem(icon: Icons.home, title: 'home'),
-          TabItem(icon: Icons.search, title: 'search'),
-          TabItem(icon: Icons.list, title: 'list'),
-          TabItem(icon: Icons.person, title: 'person'),
+          TabItem(icon: Icons.thumb_up, title: 'vote'),
+          TabItem(icon: Icons.category, title: 'category'),
+          TabItem(icon: Icons.favorite, title: 'favorite'),
           TabItem(icon: Icons.heart_broken, title: 'test'),
         ],
         onTap: onItemTapped,

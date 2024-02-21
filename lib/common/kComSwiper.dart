@@ -2,7 +2,7 @@
  * @Author: kangler liukang0120@163.com
  * @Date: 2024-02-16 10:28:50
  * @LastEditors: kangler liukang0120@163.com
- * @LastEditTime: 2024-02-16 11:10:09
+ * @LastEditTime: 2024-02-19 21:50:22
  * @FilePath: /pet/lib/common/kComSwiper.dart
  */
 import 'package:card_swiper/card_swiper.dart';
@@ -66,7 +66,7 @@ class KComSwiper extends StatelessWidget {
       containerHeight: 400,
       itemHeight: 500,
       onTap: (index) => {
-        if (onTap != null) {onTap!(bannerList[index])}
+        if (onTap != null) {onTap!(index)}
       },
       itemCount: bannerList.length,
 //如果只有一个不自动播放,多个按需求是否播放

@@ -2,7 +2,7 @@
  * @Author: kangler liukang0120@163.com
  * @Date: 2024-02-16 09:47:13
  * @LastEditors: kangler liukang0120@163.com
- * @LastEditTime: 2024-02-18 20:00:27
+ * @LastEditTime: 2024-02-20 21:36:23
  * @FilePath: /pet/lib/pages/breedInfo.dart
  */
 import 'dart:ffi';
@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:pet/common/kColors.dart';
 import 'package:pet/common/kComSwiper.dart';
 import 'package:pet/common/kRouters.dart';
+import 'package:pet/common/photoScreen.dart';
 import 'package:pet/model/breed_item.dart';
 import 'package:pet/model/pet_item.dart';
 import 'package:pet/widget/cacheImageWidget.dart';
@@ -103,20 +104,22 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
           children: [
             Positioned(
               child: Container(
-                color: Color.fromRGBO(96, 96, 96, 0.4),
+                color: const Color.fromRGBO(96, 96, 96, 0.4),
                 height: ScreenHelper.height(
                         context, MediaQuery.of(context).size.width) -
                     100,
                 child: KComSwiper(
+                    onTap: (index) {
+                      Get.to(PhotoScreen(imgList: breedImages, index: index),
+                          transition: Transition.topLevel);
+                    },
                     bannerList: breedImages,
                     item: (item) {
-                      return Container(
-                        child: CacheImageWidget(
-                          imageUrl: item,
-                          height: ScreenHelper.height(
-                                  context, MediaQuery.of(context).size.width) -
-                              100,
-                        ),
+                      return CacheImageWidget(
+                        imageUrl: item,
+                        height: ScreenHelper.height(
+                                context, MediaQuery.of(context).size.width) -
+                            100,
                       );
                     },
                     context: context),
@@ -138,7 +141,7 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
               top: MediaQuery.of(context).padding.top,
               right: 10,
               child: IconButton(
-                icon: Icon(Icons.park),
+                icon: Icon(Icons.compare),
                 iconSize: 30,
                 color: KColors().backgroudColor(),
                 onPressed: () {
@@ -155,7 +158,7 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
               child: Container(
                 decoration: BoxDecoration(
                   color: KColors().backgroudColor(),
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(20.0)),
                 ),
@@ -168,11 +171,11 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           child: Container(
                             child: Text(
                               '${breed.description}',
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           ),
                         ),
@@ -209,7 +212,7 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
                                   children: [
                                     Expanded(
                                       child: CustomProgressBar(
-                                        percentage: (value1 / 5),
+                                        percentage: (value1 / 5.0),
                                         iconData: Icons.info,
                                         text: '${propertysNames2[index]}',
                                         onPressed: () {
@@ -218,12 +221,12 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
                                         },
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                     Expanded(
                                       child: CustomProgressBar(
-                                        percentage: (value2 / 10),
+                                        percentage: (value2 / 5.0),
                                         iconData: Icons.info,
                                         text: '${propertysNames2[index + 1]}',
                                         onPressed: () {
@@ -238,7 +241,7 @@ class _BreedInfoPageState extends State<BreedInfoPage> {
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         )
                       ],

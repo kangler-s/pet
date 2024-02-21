@@ -99,7 +99,10 @@ class _CategoryPageState extends State<CategoryPage> {
             BreedItem breed = breedsList[index];
             return GestureDetector(
               onTap: () {
-                Get.toNamed(Routers.BREEDINFO, arguments: {'breed': breed});
+                Get.toNamed(
+                  Routers.BREEDINFO,
+                  arguments: {'breed': breed},
+                );
               },
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10), // 设置圆角半径

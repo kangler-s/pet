@@ -7,6 +7,7 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
@@ -30,6 +31,7 @@ class Application extends StatelessWidget {
       initialRoute: Routers.INITIAL,
       getPages: AppPages.pages,
       home: const KBottomTabbar(),
+      builder: EasyLoading.init(),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

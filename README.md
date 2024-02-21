@@ -1,5 +1,6 @@
 # pet
 
+一个关于宠物猫的 app
 A new Flutter project.
 
 ## Getting Started

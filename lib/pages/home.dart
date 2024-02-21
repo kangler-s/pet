@@ -2,7 +2,7 @@
  * @Author: kangler liukang0120@163.com
  * @Date: 2024-02-13 21:13:14
  * @LastEditors: kangler liukang0120@163.com
- * @LastEditTime: 2024-02-17 21:08:22
+ * @LastEditTime: 2024-02-20 10:07:29
  * @FilePath: /pet/lib/pages/home.dart
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -90,29 +90,44 @@ class _HomePageState extends State<HomePage> {
                     delegate: CustomHeaderDelegate(
                       key: _headerKey,
                       child: Container(
-                        child: const Stack(
+                        child: Stack(
                           children: [
-                            Positioned(
-                              left: 20,
+                            const Positioned(
+                              right: 0,
+                              top: 25,
+                              child: Image(
+                                  image: AssetImage(
+                                      'assets/images/icon_home_top.png')),
+                            ),
+                            const Positioned(
+                              left: 15,
                               top: 40,
                               child: Text(
-                                '找到你喜欢的',
+                                'Find a partner ',
                                 style: TextStyle(
                                     fontSize: 30, fontWeight: FontWeight.bold),
                               ),
                             ),
                             Positioned(
-                                left: 20,
-                                top: 90,
-                                child: Text(
-                                  '伙伴',
-                                  style: TextStyle(fontSize: 20),
-                                )),
-                            Positioned(
-                              right: 15,
-                              child: Image(
-                                  image: AssetImage(
-                                      'assets/images/icon_home_top.png')),
+                              right: 10,
+                              top: 5,
+                              child: IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.settings,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                              ),
+                            ),
+                            const Positioned(
+                              left: 15,
+                              top: 90,
+                              child: Text(
+                                'you like',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ],
                         ),
@@ -131,27 +146,29 @@ class _HomePageState extends State<HomePage> {
                         // item
                         return GestureDetector(
                           onTap: () {
-                            Get.to(PhotoScreen(imgList: [pet.url], index: 0));
+                            Get.to(PhotoScreen(imgList: [pet.url], index: 0),
+                                transition: Transition.topLevel);
                           },
                           child: Container(
-                              // 随机高度
-                              height: pet.width! > pet.height! ? 180 : 260,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Theme.of(context).cardColor,
-                                  image: DecorationImage(
-                                    image: NetworkImage(pet.url!),
-                                    fit: BoxFit.cover,
-                                  )),
-                              child: Container(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  height: 25,
-                                  alignment: Alignment.bottomLeft,
-                                  color: Colors.amber,
-                                  // child: Text('${pet.breeds![0].name}'),
-                                ),
-                              )),
+                            // 随机高度
+                            height: pet.width! > pet.height! ? 180 : 260,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: const Color.fromRGBO(189, 189, 189, .5),
+                                image: DecorationImage(
+                                  image: NetworkImage(pet.url!),
+                                  fit: BoxFit.cover,
+                                )),
+                            // child: Container(
+                            //   alignment: Alignment.bottomCenter,
+                            //   child: Container(
+                            //     height: 25,
+                            //     alignment: Alignment.bottomLeft,
+                            //     color: Colors.amber,
+                            //     // child: Text('${pet.breeds![0].name}'),
+                            //   ),
+                            // ),
+                          ),
                         );
                       },
                     ),

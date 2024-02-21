@@ -7,6 +7,7 @@ import 'package:pet/common/kColors.dart';
 import 'package:pet/common/photoScreen.dart';
 import 'package:pet/model/pet_item.dart';
 import 'package:pet/widget/animationButton.dart';
+import 'package:pet/widget/cacheImageWidget.dart';
 import 'package:rive/rive.dart';
 
 class VotePage extends StatefulWidget {
@@ -162,7 +163,13 @@ class _VotePageState extends State<VotePage> {
                   ],
                 )
               : const Center(
-                  child: Text('过会儿再来吧'),
+                  child: Text(
+                    '过会儿再来吧',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 )),
     );
   }
@@ -197,40 +204,45 @@ class _CardViewState extends State<CardView> {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                Get.to(PhotoScreen(imgList: [widget.petItem.url], index: 0));
+                Get.to(PhotoScreen(imgList: [widget.petItem.url], index: 0),
+                    transition: Transition.topLevel);
               },
               child: Container(
                 width: double.infinity, // 设置宽度为整个父容器宽度
                 height: double.infinity,
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15)),
-                  child: Image.network(
-                    '${widget.petItem.url}',
-                    fit: BoxFit.cover,
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
+                  ),
+                  child: CacheImageWidget(
+                    imageUrl: '${widget.petItem.url}',
+                    width: double.infinity,
+                    height: double.infinity,
                   ),
                 ),
               ),
             ),
           ),
-          SizedBox(
-            height: 70,
-            child: Container(
-              alignment: Alignment.topLeft,
-              decoration: BoxDecoration(
-                color: KColors().cardColor(),
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-              ),
-              child: Text(
-                'breeds: ${widget.petItem.breeds?[0].name}',
-                style: TextStyle(),
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   height: 70,
+          //   child: Container(
+          //     alignment: Alignment.topLeft,
+          //     decoration: BoxDecoration(
+          //       color: KColors().cardColor(),
+          //       borderRadius: const BorderRadius.only(
+          //         bottomLeft: Radius.circular(15),
+          //         bottomRight: Radius.circular(15),
+          //       ),
+          //     ),
+          //     child: Text(
+          //       'breeds: ${widget.petItem.breeds?[0].name}',
+          //       style: TextStyle(),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
